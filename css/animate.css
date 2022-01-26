@@ -1,0 +1,193 @@
+@charset "utf-8";
+/* CSS Document */
+
+.smoothText {
+  overflow: hidden;
+  display: block;
+}
+
+/* アニメーションで傾斜がついている文字列を水平に戻す*/
+.smoothTextTrigger{
+  transition: .7s ease-in-out;
+	transition-duration: 1s;
+  transform: translate3d(0,100%,0) skewY(12deg);
+  transform-origin: left;
+  display: block;
+}
+.smoothTextTrigger.smoothTextAppear{
+    transform: translate3d(0,0,0) skewY(0);
+}
+
+.slide-in {
+  overflow: hidden;
+    display: inline-block;
+}
+
+.slide-in_inner {
+  display: inline-block;
+
+}
+
+/*左右のアニメーション*/
+.rightAnime{
+    opacity: 0;/*事前に透過0にして消しておく*/
+}
+.leftAnime{
+    opacity: 0;/*事前に透過0にして消しておく*/
+}
+.slideAnimeLeftRight {
+  animation-name:slideTextX100;
+  animation-fill-mode:forwards;
+    opacity: 0;
+}
+
+@keyframes slideTextX100 {
+  from {
+  transform: translateX(-100%); /*要素を左の枠外に移動*/
+        opacity: 0;
+  }
+
+  to {
+  transform: translateX(0);/*要素を元の位置に移動*/
+    opacity: 1;
+  }
+}
+
+.slideAnimeRightLeft {
+  animation-name:slideTextX-100;
+  animation-fill-mode:forwards;
+    opacity: 0;
+}
+
+
+@keyframes slideTextX-100 {
+  from {
+  transform: translateX(100%);/*要素を右の枠外に移動*/
+    opacity: 0;
+  }
+
+  to {
+  transform: translateX(0);/*要素を元の位置に移動*/
+    opacity: 1;
+  }
+}
+
+
+/* 上下のアニメーション*/
+.upAnime{
+    opacity: 0;/* 事前に透過0 にして消しておく*/
+}
+
+.slideAnimeDownUp {
+    animation-name:slideTextY100;
+	animation-duration:0.8s;
+    animation-fill-mode:forwards;
+    opacity: 0;
+}
+
+@keyframes slideTextY100 {
+    from {
+        transform: translateY(100%);/* 要素を上の枠外に移動*/
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);/* 要素を元の位置に移動*/
+        opacity: 1;
+    }
+}
+.slideAnimeUpDown {
+    animation-name:slideTextY-100;
+	animation-duration:0.8s;
+    animation-fill-mode:forwards;
+    opacity: 0;
+}
+
+@keyframes slideTextY-100 {
+    from {
+    transform: translateY(-100%);/* 要素を下の枠外に移動*/
+    opacity: 0;
+    }
+    to {
+    transform: translateY(0);/* 要素を元の位置に移動*/
+    opacity: 1;
+    }
+}
+
+/* スクロールをしたら出現する要素にはじめに透過0を指定　*/
+.flipLeftTopTrigger{
+    opacity: 0;
+}
+
+.slide-in {
+	overflow: hidden;
+    transform: translate(-100%, 0%) matrix(1, 0, 0, 1, 0, 0);
+    display: inline-block;
+}
+
+.slide-in_inner {
+	display: inline-block;
+	transform: translate(100%, 0%) matrix(1, 0, 0, 1, 0, 0);
+		
+}
+
+/* flipLeftTop */
+.flipLeftTop{
+animation-name: flipLeftTopAnime;
+animation-duration:1s;
+animation-fill-mode:forwards;
+opacity:0;
+}
+
+@keyframes flipLeftTopAnime{
+  from {
+   transform: translate(-20px,80px) rotate(-15deg);
+ 	opacity: 0;
+  }
+
+  to {
+   transform: translate(0,0) rotate(0deg);
+	opacity: 1;
+  }
+}
+/* fadeUp */
+
+.fadeUp{
+animation-name: fadeUpAnime;
+animation-fill-mode:forwards;
+animation-duration:0.5s;
+transition-duration: 1s;
+opacity:0;
+}
+
+@keyframes fadeUpAnime{
+  from {
+    opacity: 0;
+	transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+	transform: translateY(0);
+  }
+}
+@keyframes anime{
+		0% {
+		transform: scale(1.2, 1.2);
+		}
+		100% {
+		transform: scale(0.9, 0.9);
+		}
+	}
+@keyframes rotation1{
+	  0%{ transform:rotate(0);}
+	  100%{ transform:rotate(360deg); }
+	}
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
+}
+
+.animate__delay{
+	animation-delay: 0.2s;
+	animation-duration: 1s;
+}
