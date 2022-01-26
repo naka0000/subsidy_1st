@@ -2,9 +2,9 @@
 
 add_action( 'wp_head', function () {
 ?>
-    <script>
-        var MAILFORMURL = '<?php echo admin_url( 'admin-ajax.php'); ?>';
-    </script>
+<script>
+    var MAILFORMURL = '<?php echo admin_url( 'admin-ajax.php'); ?>';
+</script>
 <?php
 }, 1 );
 
