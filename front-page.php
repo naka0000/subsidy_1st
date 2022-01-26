@@ -9,12 +9,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Web制作 + 補助金申請サポート付き | Grit Group</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
-<!--<link href="<?= get_template_directory_uri(); ?>/css/style.css" rel="stylesheet" type="text/css">
-<link href="<?= get_template_directory_uri(); ?>/css/btn.css" rel="stylesheet" type="text/css">
-<link href="<?= get_template_directory_uri(); ?>/css/form.css" rel="stylesheet" type="text/css">
-<link href="<?= get_template_directory_uri(); ?>/css/FCMailer.css" rel="stylesheet" type="text/css">
-<link href="<?= get_template_directory_uri(); ?>/css/animate.css" rel="stylesheet" type="text/css">	-->
+<link rel="stylesheet" href="">
 <?php wp_head(); ?>
 </head>
 
@@ -648,10 +643,8 @@
 	</footer>
 	</div>
 	
-<!--<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/js/jquery-3.4.0.min.js"></script>
-<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/js/form.js"></script>
-<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/js/animate.js"></script>-->
 <?php wp_footer(); ?>
+
 <!--ここからスムーススクロール-->
 <script>
 $(function(){

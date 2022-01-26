@@ -41,11 +41,11 @@ add_action( 'wp_enqueue_scripts', function () {
 
 //独自のCSSをwp_head関数へ書き込む
 add_action( 'wp_enqueue_scripts', function () {
+	wp_enqueue_style( 'animate-min-css', "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css");
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css');
 	wp_enqueue_style( 'btn', get_template_directory_uri() . '/css/btn.css');
 	wp_enqueue_style( 'form', get_template_directory_uri() . '/css/form.css');
   	wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.css');
-// 	wp_enqueue_style( 'FCMailer', get_template_directory_uri() . '/css/FCMailer.css');
 } );
 
 
