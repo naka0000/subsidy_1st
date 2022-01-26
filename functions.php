@@ -62,4 +62,4 @@ add_action('wp_enqueue_scripts', function () {
 } );
 
 //AJAXでwp_mailを起動させるスクリプトを読み込む
-include_once("./inc/post_mail.php");
+require_once("inc/post_mail.php");
