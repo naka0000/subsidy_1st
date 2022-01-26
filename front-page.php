@@ -705,7 +705,7 @@ $(".faq__sub dl").on("click", function(e){
         let uses = [];
         let useCheckboxes = document.querySelectorAll('input[name=use]:checked');
         for (var i = 0; i < useCheckboxes.length; i++) {
-            uses = useCheckboxes[i].value;
+            uses.push(useCheckboxes[i].value);
         }
         console.log("用途:" + uses);
         let customerName = document.querySelector('input[name=name]').value;
