@@ -33,7 +33,8 @@ function send_mail(){
 	  ."会社名:".$companyName."\n"
 	  ."メール:".$email."\n"
 	  ."電話:".$phone."\n"
-	  ."都道府県:".$provincial."\n"."内容".$message."\n";
+	  ."都道府県:".$provincial."\n"
+    ."内容".$message."\n";
 
   wp_mail( $to, $subject, $body, $headers );
     // echoで、クライアント側に返すデータを送信する
