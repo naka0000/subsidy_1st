@@ -436,7 +436,7 @@
 											<div class="caption" data-for="use" data-join=","><span>補助金用途</span><span class="mark-require">必須</span></div>
 											<div class="input form-value">
 												<div class="form-parse-text">
-													<div class="parse-line"><label><input type="checkbox" name="use" value="設備" class="require">販促</label></div>
+													<div class="parse-line"><label><input type="checkbox" name="use" value="販促" class="require">販促</label></div>
 													<div class="parse-line"><label><input type="checkbox" name="use" value="設備" class="require">設備</label></div>
 													<div class="parse-line"><label><input type="checkbox" name="use" value="感染予防対策" class="require">感染予防対策</label></div>
 													<div class="parse-line"><label><input type="checkbox" name="use" value="その他" class="require">その他</label></div>
