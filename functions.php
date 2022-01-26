@@ -36,11 +36,7 @@ add_action( 'widgets_init', function (){
 
 //初期のCSSとプラグインのCSSをwp_head関数から剥がす
 add_action( 'wp_enqueue_scripts', function () {
-	wp_deregister_style( 'contact-form-7-confirm-plus' );
-	wp_deregister_style( 'dashicons' );
-	wp_deregister_style( 'wp-block-library' );
 	wp_deregister_style( 'jquery-ui-dialog-min-css' );
-	wp_deregister_style( 'contact-form-7' );
 } );
 
 //独自のCSSをwp_head関数へ書き込む
@@ -52,11 +48,6 @@ add_action( 'wp_enqueue_scripts', function () {
 // 	wp_enqueue_style( 'FCMailer', get_template_directory_uri() . '/css/FCMailer.css');
 } );
 
-//contactForm7のJSとCSSをテーマ読み込みから外す。
-add_action( 'after_setup_theme', function () {
-//     add_filter( 'wpcf7_load_js', '__return_false' );
-//     add_filter( 'wpcf7_load_css', '__return_false' );
-} );
 
 //初期のJQueryと初期のJSとプラグインのJSをwp_head関数,wp_footer関数から剥がす
 add_action('wp_enqueue_scripts', function () {
