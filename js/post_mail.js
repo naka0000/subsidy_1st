@@ -176,6 +176,9 @@ document.getElementById("confirmButton").addEventListener('click', function() {
     });
 
     //TODO 編集画面へ戻るボタンにクリックのコールバック関数をつける
-    document.getElementById("form-back").addEventListener('click', function() {});
+    document.getElementById("form-back").addEventListener('click', function() {
+		document.getElementById("confirmText").remove();
+		document.getElementById("ajaxForm").setAttribute("style", "display:block;");
+	});
 
 });
