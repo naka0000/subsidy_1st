@@ -29,7 +29,6 @@ function send_mail(){
 	  ."相談項目:".$missionCategory."\n"
 	  ."相談サイト:".$missionUrl."\n"
 	  ."補助金用途:".$uses."\n"
-	  ."補助金用途:".$uses[0]."\n"
 	  ."名前:".$customerName."\n"
 	  ."会社名:".$companyName."\n"
 	  ."メール:".$email."\n"

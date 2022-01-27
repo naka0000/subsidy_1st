@@ -418,13 +418,13 @@
 										<div class="col form-row">
 											<div class="caption"><span>ご相談項目</span><span class="mark-require">必須</span></div>
 											<div class="input form-value">
-												<div id="mission-category-group" class="form-parse-text form-check">
-													<label><input type="radio" name="checkbok" value="ホームページを新規制作" class="require">ホームページを新規制作</label>
-													<label><input type="radio" name="checkbok" value="ホームページをリニューアル" class="require">ホームページをリニューアル</label>
+												<div id="mission-category-group" class="form-check">
+													<label><input type="radio" name="checkbok" value="ホームページを新規制作">ホームページを新規制作</label>
+													<label><input type="radio" name="checkbok" value="ホームページをリニューアル">ホームページをリニューアル</label>
 												</div>
 												<div class="blk-cap">
 													<p>リニューアルをご選択された方はURLをご入力ください</p>
-													<input type="text" name="group-text" value="" placeholder="例）http://gritgroup.co.jp/">
+													<input type="text" name="group-text" placeholder="例）http://gritgroup.co.jp/">
 												</div>
 											</div>
 										</div>
@@ -433,8 +433,8 @@
 									<div class="row">
 										<div class="col form-row">
 											<div class="caption" data-for="use" data-join=","><span>補助金用途</span><span class="mark-require">必須</span></div>
-											<div class="input form-value">
-												<div id="uses-checkbox-group" class="form-parse-text form-check">
+											<div class="input">
+												<div id="uses-checkbox-group" class="form-check">
 													<input type="checkbox" id="uses-checkbox-group1" name="use[]" value="販促" class=""><label for="uses-checkbox-group1">販促</label>
 													<input type="checkbox" id="uses-checkbox-group2" name="use[]" value="設備" class=""><label for="uses-checkbox-group2">設備</label>
 													<input type="checkbox" id="uses-checkbox-group3" name="use[]" value="感染予防対策" class=""><label for="uses-checkbox-group3">感染予防対策</label>
@@ -447,8 +447,8 @@
 									<div class="row">
 										<div class="col form-row">
 											<div class="caption"><span>お名前 / 担当者名</span><span class="mark-require">必須</span></div>
-											<div class="input form-value">
-												<input type="text" name="name" id="name" value="" class="form__input form-control" placeholder="例）田中 太郎">
+											<div class="input">
+												<input type="text" name="name" id="name" class="form__input form-control" placeholder="例）田中 太郎">
 											</div>
 										</div>
 									</div>
@@ -456,8 +456,8 @@
 									<div class="row">
 										<div class="col form-row">
 											<div class="caption"><span>店舗名 / 会社名</span><span class="mark-require">必須</span></div>
-											<div class="input form-value">
-												<input type="text" name="company" id="company" value="" class="form__input form-control" placeholder="例）株式会社 GRIT GROUP">
+											<div class="input">
+												<input type="text" name="company" id="company" class="form__input form-control" placeholder="例）株式会社 GRIT GROUP">
 											</div>
 										</div>
 									</div>
@@ -465,8 +465,8 @@
 									<div class="row">
 										<div class="col form-row">
 											<div class="caption"><span data-for="phone">電話番号</span><span class="mark-require">必須</span></div>
-											<div class="input form-value">
-												<input type="tel" name="phone" id="phone" value="" class="form__input form-control" placeholder="例）06-6606-9650">
+											<div class="input">
+												<input type="tel" name="phone" id="phone" class="form__input form-control" placeholder="例）06-6606-9650">
 											</div>
 										</div>
 									</div>
@@ -474,8 +474,8 @@
 									<div class="row">
 										<div class="col form-row">
 											<div class="caption"><span>メールアドレス</span><span class="mark-require">必須</span></div>
-											<div class="input form-value">
-												<input type="email" name="email" id="email" value="" class="form__input form-control" placeholder="例）info@grit-japan.co.jp">
+											<div class="input">
+												<input type="email" name="email" id="email" class="form__input form-control" placeholder="例）info@grit-japan.co.jp">
 											</div>
 										</div>
 									</div>
@@ -485,8 +485,8 @@
 											<div class="caption">
 												<span>都道府県</span>
 												<span class="mark-require">必須</span></div>
-											<div class="input form-value">
-												<select name="provincial" id="provincial" class="require">
+											<div class="input">
+												<select name="provincial" id="provincial">
 													<option value selected disabled>選択してください</option>
 													<option value="北海道">北海道</option>
 													<option value="青森県">青森県</option>
@@ -543,14 +543,14 @@
 									<div class="row fuild">
 										<div class="col form-row">
 											<div class="caption"><span>お問い合わせ内容</span></div>
-											<div class="input form-value"><textarea name="messages"></textarea></div>
+											<div class="input"><textarea name="messages"></textarea></div>
 										</div>
 									</div>
 									<hr>
-									<div class="row fuild confirm-hide">
+									<div class="row fuild">
 										<div class="col form-row">
 											<div class="caption"><span>個人情報の取り扱いについて</span></div>
-											<div class="input form-value">
+											<div class="input">
 												<p class="end">下記プライバシーポリシーをご確認いただき、よろしければ「個人情報の取扱いについて同意する」にチェックをして、内容を送信してください。</p>
 												<div class="rule">
 													<dl>
@@ -595,10 +595,6 @@
 									</div>
 									<hr>
 									<div class="row fuild">
-										<!-- <div id="submitButtonGroup" class="col submit submit-confirm">
-											 <button id="submit" type="submit" class="form-submit">この内容で送信する</button>
-											 <button type="reset" class="form-back">入力画面に戻る</button>
-										</div> -->
 										<div class="col submit submit-form">
 											<button id="submit-btn" class="form-submit">
 												<span>相談無料！</span><br>
@@ -607,8 +603,8 @@
 										</div>
 									</div>
 								</div>
-							</form><!--ここまで  form-->
-						</div><!--ここまで　mail target-->
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
