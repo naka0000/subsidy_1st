@@ -412,7 +412,7 @@
 					<div class="form__sub contents">
 						<p class="sec__ttl">気軽にご相談ください！</p>
 						<div id="mail" class="target">
-							<form id="ajaxForm" class="fc-form">
+							<form action="#" id="ajaxForm" class="fc-form">
 								<div class="main">
 									<div class="row">
 										<div class="col form-row">
