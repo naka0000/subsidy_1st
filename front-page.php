@@ -543,7 +543,7 @@
 									<div class="row fuild">
 										<div class="col form-row">
 											<div class="caption"><span>お問い合わせ内容</span></div>
-											<div class="input"><textarea name="messages"></textarea></div>
+											<div class="input"><textarea id="messages" name="messages"></textarea></div>
 										</div>
 									</div>
 									<hr>

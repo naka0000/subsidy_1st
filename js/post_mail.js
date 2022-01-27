@@ -29,6 +29,11 @@ new window.JustValidate('#ajaxForm', {focusInvalidField: true})
         rule: 'required',
         errorMessage: '必須項目です',
     },
+	{
+        rule: 'maxLength',
+        value: 13,
+        errorMessage: '電話番号は13文字以下でご入力ください',
+    },
 ])
 .addField('#email', [
     {
@@ -46,6 +51,13 @@ new window.JustValidate('#ajaxForm', {focusInvalidField: true})
         errorMessage: '必須項目です',
     },
 ])
+.addField('#messages', [
+    {
+        rule: 'maxLength',
+        value: 300,
+        errorMessage: 'お問い合わせ内容は300文字以下でご入力ください',
+    },
+])
 .addField('#privacy_checkbox_input', [
 	{
 		rule: 'required',
@@ -56,36 +68,29 @@ new window.JustValidate('#ajaxForm', {focusInvalidField: true})
     insertConfirmText();
 });
 
-//バリデーション成功時に発火させる関数
+//バリデーション成功時(onSuccess)に発火させる関数
 function insertConfirmText() {
 
-	//差し込みたいHTMLをテキストで記載。
+	//各inputタグから値を取得。
 	let missionCategory = "";
 	let missionCategoryRadio = document.querySelector('input[name="checkbok"]:checked');
 	if(missionCategoryRadio !== null){
 		missionCategory = missionCategoryRadio.value;
 	}
-	console.log("相談項目:" + missionCategory);
 	let missionUrl = document.querySelector('input[name="group-text"]').value;
-	console.log("相談URL:" + missionUrl);
 	let uses = [];
 	let useCheckboxes = document.querySelectorAll('input[name="use[]"]:checked');
 	for (var i = 0; i < useCheckboxes.length; i++) {
 		uses.push(useCheckboxes[i].value);
 	}
-	console.log("用途:" + uses);
 	let customerName = document.querySelector('input[name="name"]').value;
-	console.log("お客様名:" + customerName);
 	let companyName = document.querySelector('input[name="company"]').value;
-	console.log("会社名:" + companyName);
 	let phone = document.querySelector('input[name="phone"]').value;
-	console.log("電話:" + phone);
 	let email = document.querySelector('input[name="email"]').value;
-	console.log("メール:" + email);
 	let provincial = document.querySelector('select[name="provincial"]').value;
-	console.log("都道府県:" + provincial);
 	let message = document.querySelector('textarea[name="messages"]').value;
-	console.log("内容:" + message);
+	
+	//差し込みたいHTMLをテキストで記載。
 	let stringConfirmForm = `<div id="confirmText" class="fc-form">
 								<div class="main">
 									<div class="row">
