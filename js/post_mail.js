@@ -179,6 +179,9 @@ document.getElementById("confirmButton").addEventListener('click', function() {
     document.getElementById("form-back").addEventListener('click', function() {
 		document.getElementById("confirmText").remove();
 		document.getElementById("ajaxForm").setAttribute("style", "display:block;");
+		setTimeout(function() {
+			document.getElementById("mail").scrollIntoView({behavior:'smooth', block:'start'})
+		}, 100);
 	});
 
 });
