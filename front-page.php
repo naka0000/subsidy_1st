@@ -605,12 +605,12 @@
 									</div>
 									<hr>
 									<div class="row fuild">
-										<div class="col submit submit-confirm">
+										<!-- <div id="submitButtonGroup" class="col submit submit-confirm">
 											 <button id="submit" type="submit" class="form-submit">この内容で送信する</button>
 											 <button type="reset" class="form-back">入力画面に戻る</button>
-										</div>
+										</div> -->
 										<div class="col submit submit-form">
-											<button class="form-submit">
+											<button id="confirmButton" class="form-submit">
 												<span>相談無料！</span><br>
 												「入力内容の確認」<br class="sp">へ進む
 											</button>
@@ -686,63 +686,5 @@ $(".faq__sub dl").on("click", function(e){
 });
 </script>
 <!--ここまで固定ボタン-->
-<!-- ここからjavascriptによるAjaxを使ったフォーム送信 -->
-<script type="text/javascript">
-    document.getElementById("submit").addEventListener('click', function(e) {
-		e.preventDefault();
-	});
-</script>
-<script>
-    document.getElementById("submit").addEventListener('click', function() {
-        let missionCategory = "";
-        let missionCategoryRadio = document.querySelector('input[name=checkbok]:checked');
-        if(missionCategoryRadio !== null){
-            missionCategory = missionCategoryRadio.value;
-        }
-        console.log("相談項目:" + missionCategory);
-        let missionUrl = document.querySelector('input[name=group-text]').value;
-        console.log("相談URL:" + missionUrl);
-        let uses = [];
-        let useCheckboxes = document.querySelectorAll('input[name=use]:checked');
-        for (var i = 0; i < useCheckboxes.length; i++) {
-            uses.push(useCheckboxes[i].value);
-        }
-        console.log("用途:" + uses);
-        let customerName = document.querySelector('input[name=name]').value;
-        console.log("お客様名:" + customerName);
-        let companyName = document.querySelector('input[name=company]').value;
-        console.log("会社名:" + companyName);
-        let phone = document.querySelector('input[name=phone]').value;
-        console.log("電話:" + phone);
-        let email = document.querySelector('input[name=email]').value;
-        console.log("メール:" + email);
-        let provincial = document.querySelector('select[name=provincial]').value;
-        console.log("都道府県:" + provincial);
-        let message = document.querySelector('textarea[name=messages]').value;
-        console.log("内容:" + message);
-
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-        // Establishment
-        console.log("送信中です..." + xhr.statusText);
-        } else {
-        // NOT Establishment
-        console.log("送信できていません" + xhr.statusText );
-        }
-    }
-    xhr.onload = function(){
-        console.log("送信が完了しました" + xhr.responseText);
-        // document.getElementById("form-check").remove();
-        // document.forms[0].reset();
-    }
-    xhr.responseType = 'text';
-    xhr.open("POST", MAILFORMURL, true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send("action=send_mail" + "&missionCategory=" + missionCategory + "&missionUrl=" + missionUrl + "&uses=" + uses + "&customerName=" + customerName +"&companyName=" + companyName +"&phone=" + phone +"&email=" + email +"&provincial=" + provincial +"&message=" + message);
-    });
-</script>
-<!-- ここまでjavascriptによるAjaxを使ったフォーム送信 -->
-
 </body>
 </html>

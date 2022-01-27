@@ -59,6 +59,7 @@ add_action('wp_enqueue_scripts', function () {
 	wp_enqueue_script('jquery-3.4.0', get_template_directory_uri() . '/js/jquery-3.4.0.min.js', [], '', false);
 // 	wp_enqueue_script('form', get_template_directory_uri() . '/js/form.js', [], '', true);
 	wp_enqueue_script('animate', get_template_directory_uri() . '/js/animate.js', [], '', true);
+	wp_enqueue_script('post_mail', get_template_directory_uri() . '/js/post_mail.js', [], '', true);
 } );
 
 //AJAXでwp_mailを起動させるスクリプトを読み込む
