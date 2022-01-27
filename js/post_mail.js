@@ -190,25 +190,7 @@ function insertConfirmText() {
 
 	//差し込んだ確認フォームの送信ボタンに、送信処理のコールバック関数をつける
 	document.getElementById("submit").addEventListener('click', function() {
-        let missionCategory = "";
-        let missionCategoryRadio = document.querySelector('input[name=checkbok]:checked');
-        if(missionCategoryRadio !== null){
-            missionCategory = missionCategoryRadio.value;
-        }
-        let missionUrl = document.querySelector('input[name=group-text]').value;
-        let uses = [];
-        let useCheckboxes = document.querySelectorAll('input[name=use]:checked');
-        for (var i = 0; i < useCheckboxes.length; i++) {
-            uses.push(useCheckboxes[i].value);
-        }
-        let customerName = document.querySelector('input[name=name]').value;
-        let companyName = document.querySelector('input[name=company]').value;
-        let phone = document.querySelector('input[name=phone]').value;
-        let email = document.querySelector('input[name=email]').value;
-        let provincial = document.querySelector('select[name=provincial]').value;
-        let message = document.querySelector('textarea[name=messages]').value;
-
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
 			if (xhr.readyState === 4) {
 				// Establishment
