@@ -1,36 +1,90 @@
-//confirmButtonでPOST送信が行われないようにする。
-document.getElementById("confirmButton").addEventListener('click', function(e) {
-	e.preventDefault();
+//just-validate.jsライブラリを使ったフロント側バリデーション
+new window.JustValidate('#ajaxForm', {focusInvalidField: true})
+.addRequiredGroup('#mission-category-group', 'どちらかを選択してください')
+.addRequiredGroup('#uses-checkbox-group', '一つ以上選択してください')	
+.addField('#name', [
+    {
+        rule: 'required',
+        errorMessage: '必須項目です',
+    },
+    {
+        rule: 'maxLength',
+        value: 20,
+        errorMessage: 'お名前/担当者名は20文字以下でご入力ください',
+    },
+])
+.addField('#company', [
+    {
+        rule: 'required',
+        errorMessage: '必須項目です',
+    },
+    {
+        rule: 'maxLength',
+        value: 30,
+        errorMessage: '店舗名/会社名は30文字以下でご入力ください',
+    },
+])
+.addField('#phone', [
+    {
+        rule: 'required',
+        errorMessage: '必須項目です',
+    },
+])
+.addField('#email', [
+    {
+        rule: 'required',
+        errorMessage: '必須項目です',
+    },
+    {
+        rule: 'email',
+        errorMessage: 'メールアドレスを正しい形式で入力してください',
+    },
+])
+.addField('#provincial', [
+    {
+        rule: 'required',
+        errorMessage: '必須項目です',
+    },
+])
+.addField('#privacy_checkbox_input', [
+	{
+		rule: 'required',
+		errorMessage: '同意にチェックしてください',
+	}
+])
+.onSuccess((event) => {
+    insertConfirmText();
 });
 
-//confirmButtonにコールバック関数を追加
-document.getElementById("confirmButton").addEventListener('click', function() {
+//バリデーション成功時に発火させる関数
+function insertConfirmText() {
+
 	//差し込みたいHTMLをテキストで記載。
 	let missionCategory = "";
-	let missionCategoryRadio = document.querySelector('input[name=checkbok]:checked');
+	let missionCategoryRadio = document.querySelector('input[name="checkbok"]:checked');
 	if(missionCategoryRadio !== null){
 		missionCategory = missionCategoryRadio.value;
 	}
 	console.log("相談項目:" + missionCategory);
-	let missionUrl = document.querySelector('input[name=group-text]').value;
+	let missionUrl = document.querySelector('input[name="group-text"]').value;
 	console.log("相談URL:" + missionUrl);
 	let uses = [];
-	let useCheckboxes = document.querySelectorAll('input[name=use]:checked');
+	let useCheckboxes = document.querySelectorAll('input[name="use[]"]:checked');
 	for (var i = 0; i < useCheckboxes.length; i++) {
 		uses.push(useCheckboxes[i].value);
 	}
 	console.log("用途:" + uses);
-	let customerName = document.querySelector('input[name=name]').value;
+	let customerName = document.querySelector('input[name="name"]').value;
 	console.log("お客様名:" + customerName);
-	let companyName = document.querySelector('input[name=company]').value;
+	let companyName = document.querySelector('input[name="company"]').value;
 	console.log("会社名:" + companyName);
-	let phone = document.querySelector('input[name=phone]').value;
+	let phone = document.querySelector('input[name="phone"]').value;
 	console.log("電話:" + phone);
-	let email = document.querySelector('input[name=email]').value;
+	let email = document.querySelector('input[name="email"]').value;
 	console.log("メール:" + email);
-	let provincial = document.querySelector('select[name=provincial]').value;
+	let provincial = document.querySelector('select[name="provincial"]').value;
 	console.log("都道府県:" + provincial);
-	let message = document.querySelector('textarea[name=messages]').value;
+	let message = document.querySelector('textarea[name="messages"]').value;
 	console.log("内容:" + message);
 	let stringConfirmForm = `<div id="confirmText" class="fc-form">
 								<div class="main">
@@ -156,26 +210,31 @@ document.getElementById("confirmButton").addEventListener('click', function() {
 
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-        // Establishment
-        console.log("送信中です..." + xhr.statusText);
-        } else {
-        // NOT Establishment
-        console.log("送信できていません" + xhr.statusText );
-        }
-    }
-    xhr.onload = function(){
-        console.log("送信が完了しました" + xhr.responseText);
-        // document.getElementById("form-check").remove();
-        // document.forms[0].reset();
-    }
-    xhr.responseType = 'text';
-    xhr.open("POST", MAILFORMURL, true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send("action=send_mail" + "&missionCategory=" + missionCategory + "&missionUrl=" + missionUrl + "&uses=" + uses + "&customerName=" + customerName +"&companyName=" + companyName +"&phone=" + phone +"&email=" + email +"&provincial=" + provincial +"&message=" + message);
-    });
+			if (xhr.readyState === 4) {
+				// Establishment
+				console.log("送信中です..." + xhr.statusText);
+			} else {
+				// NOT Establishment
+				console.log("送信できていません" + xhr.statusText );
+			}
+		}
+		xhr.onload = function(){
+			console.log("送信が完了しました" + xhr.responseText);
+			// document.getElementById("form-check").remove();
+			// document.forms[0].reset();
+		}
+		xhr.responseType = 'text';
+		xhr.open("POST", MAILFORMURL, true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.send("action=send_mail" + "&missionCategory=" + missionCategory + "&missionUrl=" + missionUrl + "&uses=" + uses + "&customerName=" + customerName +"&companyName=" + companyName +"&phone=" + phone +"&email=" + email +"&provincial=" + provincial +"&message=" + message);
 
-    //TODO 編集画面へ戻るボタンにクリックのコールバック関数をつける
+		//入力フォームの再表示
+		document.getElementById("ajaxForm").reset();
+		document.getElementById("ajaxForm").setAttribute("style", "display:block;");
+		document.getElementById("confirmText").remove();
+	});
+
+    //編集画面へ戻るボタンにクリックのコールバック関数をつける
     document.getElementById("form-back").addEventListener('click', function() {
 		document.getElementById("confirmText").remove();
 		document.getElementById("ajaxForm").setAttribute("style", "display:block;");
@@ -183,5 +242,4 @@ document.getElementById("confirmButton").addEventListener('click', function() {
 			document.getElementById("mail").scrollIntoView({behavior:'smooth', block:'start'})
 		}, 100);
 	});
-
-});
+}

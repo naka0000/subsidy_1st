@@ -418,14 +418,13 @@
 										<div class="col form-row">
 											<div class="caption"><span>ご相談項目</span><span class="mark-require">必須</span></div>
 											<div class="input form-value">
-												<div class="form-parse-text">
-													<div class="parse-line"><label><input type="radio" name="checkbok" value="ホームページを新規制作" class="require">ホームページを新規制作</label></div>
-													<div class="parse-line"><label><input type="radio" name="checkbok" value="ホームページをリニューアル" class="require">ホームページをリニューアル</label></div>
+												<div id="mission-category-group" class="form-parse-text form-check">
+													<label><input type="radio" name="checkbok" value="ホームページを新規制作" class="require">ホームページを新規制作</label>
+													<label><input type="radio" name="checkbok" value="ホームページをリニューアル" class="require">ホームページをリニューアル</label>
 												</div>
 												<div class="blk-cap">
 													<p>リニューアルをご選択された方はURLをご入力ください</p>
 													<input type="text" name="group-text" value="" placeholder="例）http://gritgroup.co.jp/">
-													<div class="error">必須項目です</div>
 												</div>
 											</div>
 										</div>
@@ -435,13 +434,12 @@
 										<div class="col form-row">
 											<div class="caption" data-for="use" data-join=","><span>補助金用途</span><span class="mark-require">必須</span></div>
 											<div class="input form-value">
-												<div class="form-parse-text">
-													<div class="parse-line"><label><input type="checkbox" name="use" value="販促" class="require">販促</label></div>
-													<div class="parse-line"><label><input type="checkbox" name="use" value="設備" class="require">設備</label></div>
-													<div class="parse-line"><label><input type="checkbox" name="use" value="感染予防対策" class="require">感染予防対策</label></div>
-													<div class="parse-line"><label><input type="checkbox" name="use" value="その他" class="require">その他</label></div>
+												<div id="uses-checkbox-group" class="form-parse-text form-check">
+													<input type="checkbox" id="uses-checkbox-group1" name="use[]" value="販促" class=""><label for="uses-checkbox-group1">販促</label>
+													<input type="checkbox" id="uses-checkbox-group2" name="use[]" value="設備" class=""><label for="uses-checkbox-group2">設備</label>
+													<input type="checkbox" id="uses-checkbox-group3" name="use[]" value="感染予防対策" class=""><label for="uses-checkbox-group3">感染予防対策</label>
+													<input type="checkbox" id="uses-checkbox-group4" name="use[]" value="その他" class=""><label for="uses-checkbox-group4">その他</label>
 												</div>
-												<div class="error">必須項目です</div>
 											</div>
 										</div>
 									</div>
@@ -450,8 +448,7 @@
 										<div class="col form-row">
 											<div class="caption"><span>お名前 / 担当者名</span><span class="mark-require">必須</span></div>
 											<div class="input form-value">
-												<input type="text" name="name" value="" class="require" placeholder="例）田中 太郎">
-												<div class="error">必須項目です</div>
+												<input type="text" name="name" id="name" value="" class="form__input form-control" placeholder="例）田中 太郎">
 											</div>
 										</div>
 									</div>
@@ -460,8 +457,7 @@
 										<div class="col form-row">
 											<div class="caption"><span>店舗名 / 会社名</span><span class="mark-require">必須</span></div>
 											<div class="input form-value">
-												<input type="text" name="company" value="" class="require" placeholder="例）株式会社 GRIT GROUP">
-												<div class="error">必須項目です</div>
+												<input type="text" name="company" id="company" value="" class="form__input form-control" placeholder="例）株式会社 GRIT GROUP">
 											</div>
 										</div>
 									</div>
@@ -470,9 +466,7 @@
 										<div class="col form-row">
 											<div class="caption"><span data-for="phone">電話番号</span><span class="mark-require">必須</span></div>
 											<div class="input form-value">
-												<input type="tel" name="phone" value="" class="require check-phone" placeholder="例）06-6606-9650">
-												<div class="error">必須項目です</div>
-												<div class="error-phone">正しい形式で入力してください</div>
+												<input type="tel" name="phone" id="phone" value="" class="form__input form-control" placeholder="例）06-6606-9650">
 											</div>
 										</div>
 									</div>
@@ -481,9 +475,7 @@
 										<div class="col form-row">
 											<div class="caption"><span>メールアドレス</span><span class="mark-require">必須</span></div>
 											<div class="input form-value">
-												<input type="email" name="email" value="" class="require check-email" placeholder="例）info@grit-japan.co.jp">
-												<div class="error">必須項目です</div>
-												<div class="error-email">正しい形式で入力してください</div>
+												<input type="email" name="email" id="email" value="" class="form__input form-control" placeholder="例）info@grit-japan.co.jp">
 											</div>
 										</div>
 									</div>
@@ -494,7 +486,7 @@
 												<span>都道府県</span>
 												<span class="mark-require">必須</span></div>
 											<div class="input form-value">
-												<select name="provincial" class="require">
+												<select name="provincial" id="provincial" class="require">
 													<option value selected disabled>選択してください</option>
 													<option value="北海道">北海道</option>
 													<option value="青森県">青森県</option>
@@ -544,7 +536,6 @@
 													<option value="鹿児島県">鹿児島県</option>
 													<option value="沖縄県">沖縄県</option>
 												</select>
-												<div class="error">必須項目です</div>
 											</div>
 										</div>
 									</div>
@@ -596,9 +587,8 @@
 													</dl>
 												</div>
 												<div id="privacy_checkbox">
-													<input type="checkbox" class="require">
-													<label for="privacy_checkbox" class="text">個人情報の取扱いについて同意する</label>
-													<div class="error">必須項目です</div>
+													<input id="privacy_checkbox_input" type="checkbox">
+													<label for="privacy_checkbox_input" class="text">個人情報の取扱いについて同意する</label>
 												</div>
 											</div>
 										</div>
@@ -610,7 +600,7 @@
 											 <button type="reset" class="form-back">入力画面に戻る</button>
 										</div> -->
 										<div class="col submit submit-form">
-											<button id="confirmButton" class="form-submit">
+											<button id="submit-btn" class="form-submit">
 												<span>相談無料！</span><br>
 												「入力内容の確認」<br class="sp">へ進む
 											</button>
