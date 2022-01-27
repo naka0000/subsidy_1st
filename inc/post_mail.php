@@ -21,7 +21,7 @@ function send_mail(){
 	  ."\n"
 	  ."相談項目: ".$formDatas["missionCategory"]."\n"
 	  ."相談サイト: ".$formDatas["missionUrl"]."\n"
-	  ."補助金用途: ".$formDatas["uses"]."\n"
+	  ."補助金用途: ".implode(' / ', $formDatas["uses"])."\n"
 	  ."名前: ".$formDatas["customerName"]."\n"
 	  ."会社名: ".$formDatas["companyName"]."\n"
 	  ."電話: ".$formDatas["phone"]."\n"
