@@ -190,33 +190,26 @@ function insertConfirmText() {
 	//差し込んだ確認フォームの送信ボタンに、送信処理をつける
 	document.getElementById("submit").addEventListener('click', function() {
         let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-			switch ( xhr.readyState ) {
-				case 0:
-					// 未初期化状態.
-					console.log( 'uninitialized!' );
-					break;
-				case 1: // データ送信中.
-					console.log( 'loading...' );
-					break;
-				case 2: // 応答待ち.
-					console.log( 'loaded.' );
-					break;
-				case 3: // データ受信中.
-					console.log( 'interactive... '+xhr.responseText.length+' bytes.' );
-					break;
-				case 4: // データ受信完了.
-					if( xhr.status == 200 || xhr.status == 304 ) {
-						var data = xhr.responseText; // responseXML もあり
-						console.log( 'COMPLETE! :'+data );
-						document.getElementById("ajaxForm").reset()
-						document.getElementById("ajaxForm").setAttribute("style", "display:block;");
-						document.getElementById("confirmText").remove();
-					} else {
-						console.log( 'Failed. HttpStatus: '+xhr.statusText );
-					}
-					break;
-			}
+		xhr.onloadstart = function() {
+			console.log( 'データ送信中...' );
+		}
+		xhr.progress = function() {
+			console.log( 'データ受信中... '+xhr.responseText.length+' bytes.' );
+		}
+		xhr.onload = function() {
+			var data = xhr.responseText;
+			console.log( '送信が完了しました!\n' + 'レスポンスデータ:' + data );
+			document.getElementById("ajaxForm").reset()
+			document.getElementById("ajaxForm").setAttribute("style", "display:block;");
+			document.getElementById("confirmText").remove();
+			autoDisappearModal(data);
+		}
+		xhr.onerror = function() {
+			console.log("通信上のエラーが発生しました。");
+			autoDisappearModal('<p>通信エラーが発生しました<br>通信状況の良い場所で再度お試しください。</p>');
+		}
+		xhr.onloadend = function() {
+			// do nothing
 		}
 		xhr.responseType = 'text';
 		xhr.open("POST", MAILFORMURL+"?action=send_mail", true);
@@ -232,5 +225,77 @@ function insertConfirmText() {
 		setTimeout(function() {
 			document.getElementById("mail").scrollIntoView({behavior:'smooth', block:'start'})
 		}, 100);
+	});
+}
+
+
+function autoDisappearModal (message) {
+	//モーダルを作って差し込み
+	let stringModalDialog = `<div id="modalWrap" style="{display: none; background: none; width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 100; overflow: hidden;}">
+								<div class="modalBox" id="modalBox" style="position: fixed; width: 85%; max-width: 420px; height: 0; top: 0; bottom: 0; left: 0; right: 0; margin: auto; overflow: hidden; opacity: 1; display: none; border-radius: 3px; z-index: 1000;">
+									<div class="modalInner" id="modalInner" style="padding: 10px; text-align: center; box-sizing: border-box; background: rgba(0, 0, 0, 0.7); color: #fff;">
+									${message}
+									</div>
+								</div>
+							</div>`
+	let modalDialog = new DOMParser().parseFromString(stringModalDialog, "text/html").getElementById("modalWrap");
+	document.querySelector('html body').appendChild(modalDialog);
+	let modal = document.getElementById('modalBox');
+	fadeIn(modal, 200);
+	//メッセージの高さによってモーダルのサイズを調整。
+	let messageHeight = document.getElementById("modalInner").clientHeight;
+	modal.style.height = messageHeight + "px";
+	//2秒後に自動的に消滅する 
+	setTimeout(function () {
+		fadeOut(modal, 1500);
+		setTimeout(function() {
+			document.getElementById('modalWrap').remove();
+		}, 1500);
+	}, 2000);
+};
+
+
+function fadeIn(node, duration) {
+	// display: noneでないときは何もしない
+	if (getComputedStyle(node).display !== 'none') {
+		return;
+	}
+		// style属性にdisplay: noneが設定されていたとき
+	if (node.style.display === 'none') {
+		node.style.display = '';
+	} else {
+		node.style.display = 'block';
+	}
+	node.style.opacity = 0;
+  	var start = performance.now();
+	requestAnimationFrame(function tick(timestamp) {
+	  // イージング計算式（linear）
+		var easing = (timestamp - start) / duration;
+		// opacityが1を超えないように
+		node.style.opacity = Math.min(easing, 1);
+		// opacityが1より小さいとき
+		if (easing < 1) {
+			requestAnimationFrame(tick);
+		} else {
+			node.style.opacity = '';
+		}
+	});
+}
+
+function fadeOut(node, duration) {
+	node.style.opacity = 1;
+	var start = performance.now();
+	requestAnimationFrame(function tick(timestamp) {
+		// イージング計算式（linear）
+		var easing = (timestamp - start) / duration;
+		// opacityが0より小さくならないように
+		node.style.opacity = Math.max(1 - easing, 0);
+		// イージング計算式の値が1より小さいとき
+		if (easing < 1) {
+			requestAnimationFrame(tick);
+		} else {
+			node.style.opacity = '';
+			node.style.display = 'none';
+		}
 	});
 }

@@ -29,10 +29,15 @@ function send_mail(){
         ."都道府県: ".$formDatas["provincial"]."\n"
         ."内容: ".$formDatas["message"]."\n";
 
+    //メール送信をする。
     $isSend = wp_mail( $to, $subject, $body, $headers );
-    // echoで、クライアント側に返すデータを送信する
+    // 送信完了したことをフロントエンドに返す。エラーがあればサーバーエラーであったことを返す。
     header("Content-Type: application/json; charset=utf-8");
-    echo json_encode($formDatas, JSON_UNESCAPED_UNICODE);
+    if($isSend){
+        echo '<p>送信が完了しました。<br>ご連絡をお待ちください。</p>';
+    } else {
+        echo '<p>サーバー処理でエラーが発生しました。<br>お電話でのお問い合わせをお願いします</p>';
+    }
 
     // dieしておかないと末尾に余計なデータ「0」が付与されるので注意
     die();
