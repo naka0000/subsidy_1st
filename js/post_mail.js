@@ -109,7 +109,7 @@ function insertConfirmText() {
 											<div class="caption" data-for="use" data-join=","><span>補助金用途</span><span class="mark-require">必須</span></div>
 											<div class="input form-value">
 												<div class="form-parse-text">
-													<div class="parse-line"><p>${formData.uses}</p></div>
+													<div class="parse-line"><p>${formData.uses.join(" / ")}</p></div>
 												</div>
 											</div>
 										</div>
