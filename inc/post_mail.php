@@ -30,10 +30,10 @@ function send_mail(){
         ."内容: ".$formDatas["message"]."\n";
 
     //メール送信をする。
-    $isSend = wp_mail( $to, $subject, $body, $headers );
+    $sendingDone = wp_mail( $to, $subject, $body, $headers );
     // 送信完了したことをフロントエンドに返す。エラーがあればサーバーエラーであったことを返す。
     header("Content-Type: application/json; charset=utf-8");
-    if($isSend){
+    if($sendingDone){
         echo '<p>送信が完了しました。<br>ご連絡をお待ちください。</p>';
     } else {
         echo '<p>サーバー処理でエラーが発生しました。<br>お電話でのお問い合わせをお願いします</p>';
