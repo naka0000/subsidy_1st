@@ -24,7 +24,7 @@
 						<p>Web制作 + 補助金申請サポート付き</p></a>
 					</h1>
 					<div class="contact pc_tab">	
-						<p><a href="<?= get_template_directory_uri(); ?>/tel:06-6606-9650"><span>070-4315-7764</span>
+						<p><a href="tel:06-6606-9650"><span>070-4315-7764</span>
 						<small>受付時間　9:00 &sim; 17:00 (日祝除く）</small></a></p>
 					</div>
 				</div>
