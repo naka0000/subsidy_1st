@@ -182,10 +182,11 @@ function insertConfirmText() {
 
 	//入力フォームを非表示にして確認フォームを差し込む。ユーザーに送信準備ができたデータを表示するため。
 	document.getElementById("ajaxForm").setAttribute("style", "display:none;");
-	document.getElementById('mail').appendChild(confirmForm);
 	setTimeout(function() {
 		document.getElementById("form").scrollIntoView({behavior:'smooth', block:'start'})
-	}, 100);
+	}, 10);
+	document.getElementById('mail').appendChild(confirmForm);
+	insertTitleText('<p>以下の内容でよろしいですか？</p>');
 
 	//差し込んだ確認フォームの送信ボタンに、送信処理をつける
 	document.getElementById("submit").addEventListener('click', function() {
@@ -209,7 +210,7 @@ function insertConfirmText() {
 					submitButton.style.opacity = 1;
 				}, timeout);
 			} else {
-				insertDoneText(data);
+				insertTitleText(data);
 				document.getElementById('submitButtonGroup').parentElement.style.visibility = "hidden";
 				setTimeout(function() {
 					document.getElementById("form").scrollIntoView({behavior:'smooth', block:'start'})
@@ -244,7 +245,7 @@ function insertConfirmText() {
 	});
 }
 
-function insertDoneText(htmlDoneMessage) {
+function insertTitleText(htmlDoneMessage) {
 	let newSectionTitle = new DOMParser().parseFromString(htmlDoneMessage, "text/html").querySelector("html body").firstElementChild;
 	let oldSectionTitle = document.querySelector('#section-title');
 	newSectionTitle.classList = oldSectionTitle.classList;

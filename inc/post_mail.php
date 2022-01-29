@@ -57,7 +57,7 @@ function send_mail(){
 
     // 送信完了したことをフロントエンドに返す。エラーがあればサーバーエラーであったことを返す。
     header("Content-Type: application/json; charset=utf-8");
-    if($sendingDone && $sendingDoneCustomer){
+    if($sendingDoneCustomer){
         echo '<p>以下の内容で送信が完了しました。<br>自動返信メールが届いていることをご確認の上、ご連絡お待ちください。</p>';
     } else {
         echo '<p>サーバー処理でエラーが発生しました。<br>お電話でのお問い合わせをお願いします。</p>';
