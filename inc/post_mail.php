@@ -14,23 +14,21 @@ function send_mail(){
     // JSON文字列をobjectに変換 ⇒ 第2引数をtrueにしないとハマるので注意
     $formDatas = json_decode($json, true);
     
-    $blogname = get_option( 'blogname' );
-    $headers = array( 'Content-Type: text/plain; charset=UTF-8','From: me Myself ' );
-    $subject = $blogname.'の問い合わせ';
-    $to = get_option('admin_email');
-    $body = "Web制作補助金サポートへのお問い合わせです"."\n"
-        ."\n"
-        ."相談項目: ".$formDatas["missionCategory"]."\n"
-        ."相談サイト: ".$formDatas["missionUrl"]."\n"
-        ."補助金用途: ".implode(' / ', $formDatas["uses"])."\n"
-        ."名前: ".$formDatas["customerName"]."\n"
-        ."会社名: ".$formDatas["companyName"]."\n"
-        ."電話: ".$formDatas["phone"]."\n"
-        ."メール: ".$formDatas["email"]."\n"
-        ."都道府県: ".$formDatas["provincial"]."\n"
-        ."内容: ".$formDatas["message"]."\n";
-
     //メール送信をする。
+    $to = get_option('admin_email');
+    $subject = get_option('blogname').'の問い合わせ';
+    $body = "Web制作補助金サポートへのお問い合わせです"."\n"
+            ."\n"
+            ."相談項目: ".$formDatas["missionCategory"]."\n"
+            ."相談サイト: ".$formDatas["missionUrl"]."\n"
+            ."補助金用途: ".implode(' / ', $formDatas["uses"])."\n"
+            ."名前: ".$formDatas["customerName"]."\n"
+            ."会社名: ".$formDatas["companyName"]."\n"
+            ."電話: ".$formDatas["phone"]."\n"
+            ."メール: ".$formDatas["email"]."\n"
+            ."都道府県: ".$formDatas["provincial"]."\n"
+            ."内容: ".$formDatas["message"]."\n";
+    $headers = array( 'Content-Type: text/plain; charset=UTF-8','From: me Myself ' );
     $sendingDone = wp_mail( $to, $subject, $body, $headers );
 
     //お客さんにも自動返信を行う。
