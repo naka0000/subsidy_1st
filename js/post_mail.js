@@ -248,6 +248,7 @@ function insertConfirmText() {
 function insertTitleText(htmlDoneMessage) {
 	let newSectionTitle = new DOMParser().parseFromString(htmlDoneMessage, "text/html").querySelector("html body").firstElementChild;
 	let oldSectionTitle = document.querySelector('#section-title');
+	newSectionTitle.setAttribute('id', 'section-title');
 	newSectionTitle.classList = oldSectionTitle.classList;
 	oldSectionTitle.parentElement.replaceChild(newSectionTitle, oldSectionTitle);
 }
