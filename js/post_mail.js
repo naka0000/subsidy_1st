@@ -216,7 +216,7 @@ function insertConfirmText() {
 		}
 		xhr.onerror = function() {
 			console.log("通信上のエラーが発生しました。");
-			autoDisappearModal('<p>通信エラーが発生しました<br>通信状況の良い場所で再度お試しください。</p>');
+			autoDisappearModal('<p>通信エラーが発生しました<br>通信状況の良い場所で再度お試しください。</p>', 4000);
 		}
 		xhr.onloadend = function() {
 			// do nothing
