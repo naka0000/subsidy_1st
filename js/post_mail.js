@@ -211,6 +211,9 @@ function insertConfirmText() {
 			} else {
 				insertDoneText(data);
 				document.getElementById('submitButtonGroup').parentElement.style.visibility = "hidden";
+				setTimeout(function() {
+					document.getElementById("form").scrollIntoView({behavior:'smooth', block:'start'})
+				}, 100);
 			}
 		}
 		xhr.onerror = function() {
