@@ -73,7 +73,7 @@ function insertConfirmText() {
 
 	//各inputタグから値を取得、連想配列に格納
 	var formData = {
-		missionCategory: document.querySelector('input[name="checkbok"]:checked').value,
+		missionCategory: document.querySelector('input[name="checkbok"]:checked') == null ? '' : document.querySelector('input[name="checkbok"]:checked').value,
 		missionUrl:      document.querySelector('input[name="group-text"]').value,
 		uses:            Array.from(document.querySelectorAll('input[name="use[]"]:checked')).map(useCheckbox => useCheckbox.value),
 		customerName:    document.querySelector('input[name="name"]').value,
@@ -223,13 +223,16 @@ function insertConfirmText() {
 		document.getElementById("ajaxForm").setAttribute("style", "display:block;");
 		//ひと呼吸置いてスクロールするようにして見栄えを整えるためsetTimeoutを挟む。
 		setTimeout(function() {
-			document.getElementById("mail").scrollIntoView({behavior:'smooth', block:'start'})
+			document.getElementById("form").scrollIntoView({behavior:'smooth', block:'start'})
 		}, 100);
 	});
 }
 
 
 function autoDisappearModal (message) {
+	/**
+	 * 自動的に消えるポップアップ関数
+	 */
 	//モーダルを作って差し込み
 	let stringModalDialog = `<div id="modalWrap" style="{display: none; background: none; width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 100; overflow: hidden;}">
 								<div class="modalBox" id="modalBox" style="position: fixed; width: 85%; max-width: 420px; height: 0; top: 0; bottom: 0; left: 0; right: 0; margin: auto; overflow: hidden; opacity: 1; display: none; border-radius: 3px; z-index: 1000;">
@@ -256,6 +259,9 @@ function autoDisappearModal (message) {
 
 
 function fadeIn(node, duration) {
+	/**
+	 * JQuery非依存のフェードイン関数
+	 */
 	// display: noneでないときは何もしない
 	if (getComputedStyle(node).display !== 'none') {
 		return;
@@ -283,6 +289,9 @@ function fadeIn(node, duration) {
 }
 
 function fadeOut(node, duration) {
+	/**
+	 * JQuery非依存のフェードアウト関数
+	 */
 	node.style.opacity = 1;
 	var start = performance.now();
 	requestAnimationFrame(function tick(timestamp) {
