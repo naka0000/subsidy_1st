@@ -184,7 +184,7 @@ function insertConfirmText() {
 	document.getElementById("ajaxForm").setAttribute("style", "display:none;");
 	document.getElementById('mail').appendChild(confirmForm);
 	setTimeout(function() {
-		document.getElementById("mail").scrollIntoView({behavior:'smooth', block:'start'})
+		document.getElementById("form").scrollIntoView({behavior:'smooth', block:'start'})
 	}, 100);
 
 	//差し込んだ確認フォームの送信ボタンに、送信処理をつける
