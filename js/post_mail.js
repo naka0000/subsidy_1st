@@ -201,7 +201,6 @@ function insertConfirmText() {
 		}
 		xhr.onload = function() {
 			var data = xhr.responseText;
-			console.log( '送信が完了しました!\n' + 'レスポンスデータ:' + data );
 			if(xhr.responseText.includes('エラー')){
 				let timeout = 4000;
 				autoDisappearModal(data, timeout);
@@ -215,8 +214,12 @@ function insertConfirmText() {
 			}
 		}
 		xhr.onerror = function() {
-			console.log("通信上のエラーが発生しました。");
+			let timeout = 4000;
 			autoDisappearModal('<p>通信エラーが発生しました<br>通信状況の良い場所で再度お試しください。</p>', 4000);
+			setTimeout(function () {
+				submitButton.disabled = false;
+				submitButton.style.opacity = 1;
+			}, timeout);
 		}
 		xhr.onloadend = function() {
 			// do nothing
