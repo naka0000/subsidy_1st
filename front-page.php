@@ -410,7 +410,7 @@
 				</div>
 				<div class="form__wrap">
 					<div class="form__sub contents">
-						<p class="sec__ttl">気軽にご相談ください！</p>
+						<p id="section-title" class="sec__ttl">気軽にご相談ください！</p>
 						<div id="mail" class="target">
 							<form action="#" id="ajaxForm" class="fc-form">
 								<div class="main">
