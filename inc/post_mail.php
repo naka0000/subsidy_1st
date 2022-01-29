@@ -17,7 +17,8 @@ function send_mail(){
     $blogname = get_option( 'blogname' );
     $headers = array( 'Content-Type: text/plain; charset=UTF-8','From: me Myself ' );
     $subject = $blogname.'の問い合わせ';
-    $to = get_option('admin_email');$body = "Web制作補助金サポートへのお問い合わせです"."\n"
+    $to = get_option('admin_email');
+    $body = "Web制作補助金サポートへのお問い合わせです"."\n"
         ."\n"
         ."相談項目: ".$formDatas["missionCategory"]."\n"
         ."相談サイト: ".$formDatas["missionUrl"]."\n"
