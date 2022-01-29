@@ -1,2 +1,2 @@
 <?php
-echo "ページが見つかりませんでした。";
+header("Location: ".site_url());
