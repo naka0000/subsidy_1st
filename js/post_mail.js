@@ -189,6 +189,9 @@ function insertConfirmText() {
 
 	//差し込んだ確認フォームの送信ボタンに、送信処理をつける
 	document.getElementById("submit").addEventListener('click', function() {
+		let submitButton = document.getElementById("submit");
+		submitButton.disabled = true;
+		submitButton.style.opacity = 0.5;
         let xhr = new XMLHttpRequest();
 		xhr.onloadstart = function() {
 			console.log( 'データ送信中...' );
@@ -200,12 +203,17 @@ function insertConfirmText() {
 			var data = xhr.responseText;
 			console.log( '送信が完了しました!\n' + 'レスポンスデータ:' + data );
 			if(xhr.responseText.includes('エラー')){
-				autoDisappearModal(data);
+				let timeout = 4000;
+				autoDisappearModal(data, timeout);
+				setTimeout(function () {
+					submitButton.disabled = false;
+					submitButton.style.opacity = 1;
+				}, timeout);
 			} else {
 				document.getElementById("ajaxForm").reset()
 				document.getElementById("ajaxForm").setAttribute("style", "display:block;");
 				document.getElementById("confirmText").remove();
-				autoDisappearModal(data);
+				autoDisappearModal(data, 4000);
 			}
 		}
 		xhr.onerror = function() {
@@ -232,8 +240,12 @@ function insertConfirmText() {
 	});
 }
 
+function insertDoneText() {
+	
+}
 
-function autoDisappearModal (message) {
+
+function autoDisappearModal (message, timeout) {
 	/**
 	 * 自動的に消えるポップアップ関数
 	 */
@@ -254,11 +266,11 @@ function autoDisappearModal (message) {
 	modal.style.height = messageHeight + "px";
 	//2秒後に自動的に消滅する 
 	setTimeout(function () {
-		fadeOut(modal, 1500);
+		fadeOut(modal, 200);
 		setTimeout(function() {
 			document.getElementById('modalWrap').remove();
-		}, 1500);
-	}, 2000);
+		}, 200);
+	}, timeout);
 };
 
 
@@ -312,3 +324,4 @@ function fadeOut(node, duration) {
 		}
 	});
 }
+
