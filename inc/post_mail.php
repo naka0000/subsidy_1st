@@ -32,10 +32,10 @@ function send_mail(){
     $sendingDone = wp_mail( $to, $subject, $body, $headers );
 
     //お客さんにも自動返信を行う。
-    $customerAddress = $formDatas["emeil"];
+    $customerAddress = $formDatas["email"];
     $autoReplySubject = "GRIT GROUPのWeb制作補助金サポートへのお問い合わせが完了しました。";
-    $autoReplyBody = $formDatas["customerName"]."様"
-                    ."この度はGRIT GROUPのWeb制作補助金サポートへお問い合わせいただきありがとうございます"."\n"
+    $autoReplyBody = $formDatas["customerName"]."様"."\n"
+                    ."この度はGRIT GROUPのWeb制作補助金サポートへお問い合わせいただきありがとうございます。"."\n"
                     ."\n"
                     ."以下のお問い合わせ内容を受け付けました。"."\n"
                     ."\n"
@@ -50,14 +50,14 @@ function send_mail(){
                     ."都道府県: ".$formDatas["provincial"]."\n"
                     ."内容: ".$formDatas["message"]."\n"
                     ."\n"
-                    ."3営業日以内に当社担当からご連絡を差し上げます。"
+                    ."3営業日以内に当社担当からご連絡を差し上げます。"."\n"
                     ."今しばらくお待ちください";
     $headers = array( 'Content-Type: text/plain; charset=UTF-8','From: 株式会社GRIT GROUP' );
-    wp_mail( $customerAddress, $autoReplySubject, $autoReplyBody, $headers );
+    $sendingDoneCustomer = wp_mail( $customerAddress, $autoReplySubject, $autoReplyBody, $headers );
 
     // 送信完了したことをフロントエンドに返す。エラーがあればサーバーエラーであったことを返す。
     header("Content-Type: application/json; charset=utf-8");
-    if($sendingDone){
+    if($sendingDone && $sendingDoneCustomer){
         echo '<p>以下の内容で送信が完了しました。<br>自動返信メールが届いていることをご確認の上、ご連絡お待ちください。</p>';
     } else {
         echo '<p>サーバー処理でエラーが発生しました。<br>お電話でのお問い合わせをお願いします。</p>';
