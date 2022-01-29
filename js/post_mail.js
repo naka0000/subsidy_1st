@@ -1,69 +1,69 @@
 //just-validate.jsライブラリを使ったフロント側バリデーション
 new window.JustValidate('#ajaxForm', {focusInvalidField: true})
-// .addRequiredGroup('#mission-category-group', 'どちらかを選択してください')
-// .addRequiredGroup('#uses-checkbox-group', '一つ以上選択してください')	
-// .addField('#name', [
-//     {
-//         rule: 'required',
-//         errorMessage: '必須項目です',
-//     },
-//     {
-//         rule: 'maxLength',
-//         value: 20,
-//         errorMessage: 'お名前/担当者名は20文字以下でご入力ください',
-//     },
-// ])
-// .addField('#company', [
-//     {
-//         rule: 'required',
-//         errorMessage: '必須項目です',
-//     },
-//     {
-//         rule: 'maxLength',
-//         value: 30,
-//         errorMessage: '店舗名/会社名は30文字以下でご入力ください',
-//     },
-// ])
-// .addField('#phone', [
-//     {
-//         rule: 'required',
-//         errorMessage: '必須項目です',
-//     },
-// 	{
-//         rule: 'maxLength',
-//         value: 13,
-//         errorMessage: '電話番号は13文字以下でご入力ください',
-//     },
-// ])
-// .addField('#email', [
-//     {
-//         rule: 'required',
-//         errorMessage: '必須項目です',
-//     },
-//     {
-//         rule: 'email',
-//         errorMessage: 'メールアドレスを正しい形式で入力してください',
-//     },
-// ])
-// .addField('#provincial', [
-//     {
-//         rule: 'required',
-//         errorMessage: '必須項目です',
-//     },
-// ])
-// .addField('#messages', [
-//     {
-//         rule: 'maxLength',
-//         value: 300,
-//         errorMessage: 'お問い合わせ内容は300文字以下でご入力ください',
-//     },
-// ])
-// .addField('#privacy_checkbox_input', [
-// 	{
-// 		rule: 'required',
-// 		errorMessage: '同意にチェックしてください',
-// 	}
-// ])
+.addRequiredGroup('#mission-category-group', 'どちらかを選択してください')
+.addRequiredGroup('#uses-checkbox-group', '一つ以上選択してください')	
+.addField('#name', [
+    {
+        rule: 'required',
+        errorMessage: '必須項目です',
+    },
+    {
+        rule: 'maxLength',
+        value: 20,
+        errorMessage: 'お名前/担当者名は20文字以下でご入力ください',
+    },
+])
+.addField('#company', [
+    {
+        rule: 'required',
+        errorMessage: '必須項目です',
+    },
+    {
+        rule: 'maxLength',
+        value: 30,
+        errorMessage: '店舗名/会社名は30文字以下でご入力ください',
+    },
+])
+.addField('#phone', [
+    {
+        rule: 'required',
+        errorMessage: '必須項目です',
+    },
+	{
+        rule: 'maxLength',
+        value: 13,
+        errorMessage: '電話番号は13文字以下でご入力ください',
+    },
+])
+.addField('#email', [
+    {
+        rule: 'required',
+        errorMessage: '必須項目です',
+    },
+    {
+        rule: 'email',
+        errorMessage: 'メールアドレスを正しい形式で入力してください',
+    },
+])
+.addField('#provincial', [
+    {
+        rule: 'required',
+        errorMessage: '必須項目です',
+    },
+])
+.addField('#messages', [
+    {
+        rule: 'maxLength',
+        value: 300,
+        errorMessage: 'お問い合わせ内容は300文字以下でご入力ください',
+    },
+])
+.addField('#privacy_checkbox_input', [
+	{
+		rule: 'required',
+		errorMessage: '同意にチェックしてください',
+	}
+])
 .onSuccess((event) => {
     insertConfirmText();
 });
