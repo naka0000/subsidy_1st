@@ -199,10 +199,14 @@ function insertConfirmText() {
 		xhr.onload = function() {
 			var data = xhr.responseText;
 			console.log( '送信が完了しました!\n' + 'レスポンスデータ:' + data );
-			document.getElementById("ajaxForm").reset()
-			document.getElementById("ajaxForm").setAttribute("style", "display:block;");
-			document.getElementById("confirmText").remove();
-			autoDisappearModal(data);
+			if(xhr.responseText.includes('エラー')){
+				autoDisappearModal(data);
+			} else {
+				document.getElementById("ajaxForm").reset()
+				document.getElementById("ajaxForm").setAttribute("style", "display:block;");
+				document.getElementById("confirmText").remove();
+				autoDisappearModal(data);
+			}
 		}
 		xhr.onerror = function() {
 			console.log("通信上のエラーが発生しました。");
