@@ -52,7 +52,7 @@ function send_mail(){
                     ."\n"
                     ."3営業日以内に当社担当からご連絡を差し上げます。"."\n"
                     ."今しばらくお待ちください";
-    $headers = array( 'Content-Type: text/plain; charset=UTF-8','From: 株式会社GRIT GROUP' );
+    $headers = array( 'Content-Type: text/plain; charset=UTF-8' );
     $sendingDoneCustomer = wp_mail( $customerAddress, $autoReplySubject, $autoReplyBody, $headers );
 
     // 送信完了したことをフロントエンドに返す。エラーがあればサーバーエラーであったことを返す。
