@@ -8,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>test Web制作 + 補助金申請サポート付き | Grit Group</title>
+<title>Web制作 + 補助金申請サポート付き | Grit Group</title>
 <link rel="stylesheet" href="">
 <?php wp_head(); ?>
 </head>
