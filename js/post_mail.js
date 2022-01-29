@@ -178,7 +178,7 @@ function insertConfirmText() {
 								</div>`;
 
 	//HTMLElementに変換(appendChild関数のクラスに合わせるため。adjacentHTML関数でそのまま文字列を差し込むのはエラーの温床になるため。)			
-	let confirmForm = new DOMParser().parseFromString(stringConfirmForm, "text/html").querySelector("html body").firstChild;
+	let confirmForm = new DOMParser().parseFromString(stringConfirmForm, "text/html").querySelector("html body").firstElementChild;
 
 	//入力フォームを非表示にして確認フォームを差し込む。ユーザーに送信準備ができたデータを表示するため。
 	document.getElementById("ajaxForm").setAttribute("style", "display:none;");
@@ -257,7 +257,7 @@ function autoDisappearModal (message, timeout) {
 									</div>
 								</div>
 							</div>`
-	let modalDialog = new DOMParser().parseFromString(stringModalDialog, "text/html").querySelector("html body").firstChild;
+	let modalDialog = new DOMParser().parseFromString(stringModalDialog, "text/html").querySelector("html body").firstElementChild;
 	document.querySelector('html body').appendChild(modalDialog);
 	let modal = document.getElementById('modalBox');
 	fadeIn(modal, 200);
