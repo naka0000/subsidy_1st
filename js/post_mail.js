@@ -1,5 +1,5 @@
 //just-validate.jsライブラリを使ったフロント側バリデーション
-new window.JustValidate('#ajaxForm', {focusInvalidField: true})
+new window.JustValidate('#ajaxForm')
 .addRequiredGroup('#mission-category-group', 'どちらかを選択してください')
 .addRequiredGroup('#uses-checkbox-group', '一つ以上選択してください')	
 .addField('#name', [
