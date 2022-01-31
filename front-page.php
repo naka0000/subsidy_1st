@@ -9,7 +9,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Web制作 + 補助金申請サポート付き | Grit Group</title>
-<link rel="stylesheet" href="">
 <?php wp_head(); ?>
 </head>
 
@@ -24,7 +23,7 @@
 						<p>Web制作 + 補助金申請サポート付き</p></a>
 					</h1>
 					<div class="contact pc_tab">	
-						<p><a href="tel:06-6606-9650"><span>070-4315-7764</span>
+						<p><a href="tel:06-6606-9650"><span>06-6606-9650</span>
 						<small>受付時間　9:00 &sim; 17:00 (日祝除く）</small></a></p>
 					</div>
 				</div>
